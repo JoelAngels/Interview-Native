@@ -12,10 +12,9 @@ import { StatusBar } from "expo-status-bar";
 import {
   Bars3CenterLeftIcon,
   MagnifyingGlassIcon,
-  // MagnifyingGlassIcon,
 } from "react-native-heroicons/outline";
 import { styles } from "../theme";
-import TrendingMovies from "../src/components/trendingMovies";
+import TrendingMovies from "../components/trendingMovies";
 
 const ios = Platform.OS === "ios";
 
