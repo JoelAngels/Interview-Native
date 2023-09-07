@@ -1,6 +1,14 @@
-import { View, Text, TouchableWithoutFeedback } from "react-native";
+import {
+  View,
+  Text,
+  TouchableWithoutFeedback,
+  Dimensions,
+  Image,
+} from "react-native";
 import React from "react";
 import Carousel from "react-native-snap-carousel-v4";
+
+var { width, height } = Dimensions.get("window");
 
 export default function TrendingMovies({ data }) {
   return (
@@ -22,7 +30,14 @@ export default function TrendingMovies({ data }) {
 const MovieCard = ({ item }) => {
   return (
     <TouchableWithoutFeedback>
-      <Text className="text-white">Movie</Text>
+      <Image
+        source={require("../assets/images/moviePoster1.png")}
+        style={{
+          width: width * 0.6,
+          height: height * 0.4,
+        }}
+        className="rounded-3xl"
+      />
     </TouchableWithoutFeedback>
   );
 };
