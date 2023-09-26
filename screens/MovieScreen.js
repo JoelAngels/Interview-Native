@@ -60,6 +60,17 @@ export default function MovieScreen() {
           source={require("../assets/images/moviePoster2.png")}
           style={{ width, height: height * 0.55 }}
         />
+        <LinearGradient
+          colors={[
+            "transparent",
+            "rgba(23, 23, 23, 0.8)",
+            "rgba(23, 23, 23, 1)",
+          ]}
+          style={{ width, height: height * 0.4 }}
+          start={{ x: 0.5, y: 0 }}
+          end={{ x: 0.5, y: 1 }}
+          className="absolute bottom-0"
+        />
       </View>
     </ScrollView>
   );
