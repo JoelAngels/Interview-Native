@@ -15,13 +15,16 @@ import { styles, theme } from "../theme";
 import { LinearGradient } from "expo-linear-gradient";
 import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
+import Cast from "../components/cast";
+import MovieList from "../components/movieList";
 
 var { width, height } = Dimensions.get("window");
 
 export default function MovieScreen() {
   const navigation = useNavigation();
   const [isFavourite, setFavourite] = useState(false);
-
+  const [cast, setCast] = useState([1, 2, 3, 4, 5]);
+  const [similarMovies, setSimilarMovies] = useState([1, 2, 3, 4, 5]);
   let movieName = "Ant-Man and the Wasp: Quantumania";
 
   const genre = [
@@ -124,6 +127,14 @@ export default function MovieScreen() {
       </View>
 
       {/* CAST */}
+      <Cast navigation={navigation} cast={cast} />
+
+      {/* Similar Movies */}
+      <MovieList
+        title="Similar Movies"
+        hideSeeAll={true}
+        data={similarMovies}
+      />
     </ScrollView>
   );
 }
