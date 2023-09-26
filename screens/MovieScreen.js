@@ -3,9 +3,11 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ArrowLeftIcon, ChevronLeftIcon } from "react-native-heroicons/outline";
 import { HeartIcon } from "react-native-heroicons/solid";
+import { useNavigation } from "@react-navigation/native";
 import { styles } from "../theme";
 
 export default function MovieScreen() {
+  const navigation = useNavigation();
   return (
     <ScrollView
       contentContainerStyle={{ paddingBottom: 90 }}
@@ -20,6 +22,7 @@ export default function MovieScreen() {
         <TouchableOpacity
           style={styles.background}
           className="rounded-xl p-1 mt-5"
+          onPress={() => navigation.goBack()}
         >
           <ChevronLeftIcon
             size="28"
@@ -29,7 +32,7 @@ export default function MovieScreen() {
           />
         </TouchableOpacity>
 
-        <TouchableOpacity className="mt-6">
+        <TouchableOpacity>
           <HeartIcon
             size="35"
             color="white"
