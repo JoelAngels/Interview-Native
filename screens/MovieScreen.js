@@ -13,12 +13,31 @@ import { HeartIcon } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
 import { styles, theme } from "../theme";
 import { LinearGradient } from "expo-linear-gradient";
+import "react-native-get-random-values";
+import { v4 as uuidv4 } from "uuid";
 
 var { width, height } = Dimensions.get("window");
 
 export default function MovieScreen() {
   const navigation = useNavigation();
   const [isFavourite, setFavourite] = useState(false);
+
+  let movieName = "Ant-Man and the Wasp: Quantumania";
+
+  const genre = [
+    {
+      id: uuidv4,
+      title: "Drama",
+    },
+    {
+      id: uuidv4,
+      title: "Thriller",
+    },
+    {
+      id: uuidv4,
+      title: "Romance",
+    },
+  ];
   return (
     <ScrollView
       contentContainerStyle={{ paddingBottom: 90 }}
@@ -54,7 +73,7 @@ export default function MovieScreen() {
           />
         </TouchableOpacity>
       </SafeAreaView>
-
+      {/* Image details with gradient*/}
       <View>
         <Image
           source={require("../assets/images/moviePoster2.png")}
@@ -71,6 +90,27 @@ export default function MovieScreen() {
           end={{ x: 0.5, y: 1 }}
           className="absolute bottom-0"
         />
+      </View>
+      {/* Movie details */}
+      <View style={{ marginTop: -(height * 0.09) }}>
+        <Text className="text-white text-center text-3xl font-bold tracking-wider">
+          {movieName}
+        </Text>
+      </View>
+      {/* Status, release, runtime */}
+      <Text className="text-neutral-400 font-semibold text-base text-center mt-5">
+        Released . 2023 . 170min
+      </Text>
+      {/* Genres*/}
+      <View className="flex-row justify-center mx-4 space-x-2">
+        {genre.map((item) => (
+          <Text
+            className="text-neutral-400 font-semibold text-base text-center"
+            key={item.uuidv4}
+          >
+            {item.title}
+          </Text>
+        ))}
       </View>
     </ScrollView>
   );
