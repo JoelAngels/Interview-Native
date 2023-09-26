@@ -27,7 +27,7 @@ export default function MovieScreen() {
   const genre = [
     {
       id: uuidv4,
-      title: "Drama",
+      title: "Action",
     },
     {
       id: uuidv4,
@@ -35,7 +35,7 @@ export default function MovieScreen() {
     },
     {
       id: uuidv4,
-      title: "Romance",
+      title: "Comedy",
     },
   ];
   return (
@@ -96,22 +96,34 @@ export default function MovieScreen() {
         <Text className="text-white text-center text-3xl font-bold tracking-wider">
           {movieName}
         </Text>
+
+        {/* Status, release, runtime */}
+        <Text className="text-neutral-400 font-semibold text-base text-center mt-5">
+          Released . 2023 . 170min
+        </Text>
+
+        {/* Genres*/}
+        <View className="flex-row justify-center mx-4 space-x-2">
+          {genre.map((item) => (
+            <Text
+              className="text-neutral-400 font-semibold text-base text-center"
+              key={item.uuidv4}
+            >
+              {item.title}
+            </Text>
+          ))}
+        </View>
+
+        {/* Description */}
+        <Text className="text-neutral-400 mx-4 tracking-wide">
+          The "Passion" may include, among other events, Jesus's triumphal entry
+          into Jerusalem, his cleansing of the Temple, his anointing, the Last
+          Supper, his agony, his arrest, his trials before the Sanhedrin and
+          before Pilate, his crucifixion and death, and his burial.
+        </Text>
       </View>
-      {/* Status, release, runtime */}
-      <Text className="text-neutral-400 font-semibold text-base text-center mt-5">
-        Released . 2023 . 170min
-      </Text>
-      {/* Genres*/}
-      <View className="flex-row justify-center mx-4 space-x-2">
-        {genre.map((item) => (
-          <Text
-            className="text-neutral-400 font-semibold text-base text-center"
-            key={item.uuidv4}
-          >
-            {item.title}
-          </Text>
-        ))}
-      </View>
+
+      {/* CAST */}
     </ScrollView>
   );
 }
