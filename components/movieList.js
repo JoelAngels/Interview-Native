@@ -26,7 +26,7 @@ export default function MovieList({ title, data }) {
           </Text>
         </TouchableOpacity>
       </View>
-      {/* Movie Row */}
+      {/* Movie Row for upcoming */}
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}

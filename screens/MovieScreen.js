@@ -1,13 +1,24 @@
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
-import React from "react";
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
+import React, { useEffect, useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ArrowLeftIcon, ChevronLeftIcon } from "react-native-heroicons/outline";
 import { HeartIcon } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
-import { styles } from "../theme";
+import { styles, theme } from "../theme";
+import { LinearGradient } from "expo-linear-gradient";
+
+var { width, height } = Dimensions.get("window");
 
 export default function MovieScreen() {
   const navigation = useNavigation();
+  const [isFavourite, setFavourite] = useState(false);
   return (
     <ScrollView
       contentContainerStyle={{ paddingBottom: 90 }}
@@ -32,14 +43,24 @@ export default function MovieScreen() {
           />
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        {/* onClick toggle to render favourite */}
+        <TouchableOpacity
+          onPress={() => setFavourite(!isFavourite)}
+          className="rounded-xl p-1 mt-5"
+        >
           <HeartIcon
             size="35"
-            color="white"
-            // color={isFavourite ? theme.background : "white"}
+            color={isFavourite ? theme.background : "white"}
           />
         </TouchableOpacity>
       </SafeAreaView>
+
+      <View>
+        <Image
+          source={require("../assets/images/moviePoster2.png")}
+          style={{ width, height: height * 0.55 }}
+        />
+      </View>
     </ScrollView>
   );
 }
