@@ -13,12 +13,13 @@ import { HeartIcon } from "react-native-heroicons/solid";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles, theme } from "../theme";
+import MovieList from "../components/movieList";
 var { width, height } = Dimensions.get("window");
-const ios = Platform.OS === "ios";
 
 export default function PersonScreen() {
   const navigation = useNavigation(false);
   const [isFavourite, setFavourite] = useState(false);
+  const [personMovies, setPersonMovies] = useState([1, 2, 3, 4]);
   return (
     <ScrollView
       className="flex-1 bg-neutral-900"
@@ -80,6 +81,8 @@ export default function PersonScreen() {
           </Text>
         </View>
 
+        {/*========================== Gender Section and Details===================================== */}
+
         <View className="mx-3 mt-6 p-4 flex-row justify-between items-center bg-neutral-700 rounded-full">
           <View className="border-r-2 border-r-neutral-400 px-2 items-center">
             <Text className="text-white font-semibold">Gender</Text>
@@ -101,6 +104,20 @@ export default function PersonScreen() {
             <Text className="text-neutral-300 text-sm">64.23</Text>
           </View>
         </View>
+        {/*===================== Biography========================= */}
+        <View className="my-6 mx-4 space-y-2">
+          <Text className="text-white text-lg">Biography</Text>
+          <Text className="text-neutral-400 tracking-wide">
+            {/* {person?.biography ? person.biography : "N/A"} */}He is the
+            titular protagonist of the American media franchise John Wick. In
+            the franchise's film series, he is introduced as a legendary
+            Belarusian-American ex-hitman who left the criminal underworld after
+            falling in love with and marrying a woman named Helen.
+          </Text>
+        </View>
+
+        {/*=============== Movie List for the Peron============================ */}
+        <MovieList data={personMovies} title={"Movies"} hideSeeAll={true} />
       </View>
     </ScrollView>
   );
