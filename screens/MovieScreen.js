@@ -13,10 +13,10 @@ import { HeartIcon } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
 import { styles, theme } from "../theme";
 import { LinearGradient } from "expo-linear-gradient";
-import "react-native-get-random-values";
-import { v4 as uuidv4 } from "uuid";
 import Cast from "../components/cast";
 import MovieList from "../components/movieList";
+import "react-native-get-random-values";
+import { v4 as uuidv4 } from "uuid";
 
 var { width, height } = Dimensions.get("window");
 
@@ -26,18 +26,19 @@ export default function MovieScreen() {
   const [cast, setCast] = useState([1, 2, 3, 4, 5]);
   const [similarMovies, setSimilarMovies] = useState([1, 2, 3, 4, 5]);
   let movieName = "Ant-Man and the Wasp: Quantumania";
+  let uuid = uuidv4();
 
   const genre = [
     {
-      id: uuidv4,
+      id: uuid,
       title: "Action",
     },
     {
-      id: uuidv4,
+      id: uuid,
       title: "Thriller",
     },
     {
-      id: uuidv4,
+      id: uuid,
       title: "Comedy",
     },
   ];
@@ -110,7 +111,7 @@ export default function MovieScreen() {
           {genre.map((item) => (
             <Text
               className="text-neutral-400 font-semibold text-base text-center"
-              key={item.uuidv4}
+              key={item.uuid}
             >
               {item.title}
             </Text>
