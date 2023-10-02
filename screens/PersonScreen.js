@@ -14,12 +14,49 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles, theme } from "../theme";
 import MovieList from "../components/movieList";
+import "react-native-get-random-values";
+import { v4 as uuidv4 } from "uuid";
+
 var { width, height } = Dimensions.get("window");
 
 export default function PersonScreen() {
   const navigation = useNavigation(false);
   const [isFavourite, setFavourite] = useState(false);
   const [personMovies, setPersonMovies] = useState([1, 2, 3, 4]);
+
+  const personData = [
+    {
+      id: uuidv4(),
+      title: "Gender",
+      personal: "male",
+    },
+    {
+      id: uuidv4(),
+      title: "Birthday",
+      personal: "1964-09-02",
+    },
+    {
+      id: uuidv4(),
+      title: "Known For",
+      personal: "Acting",
+    },
+  ];
+
+  const renderPersonalData = () => {
+    return personData.map((item) => {
+      const { id, title, personal } = item;
+      return (
+        <View
+          className="border-r-2 border-r-neutral-400 px-2 items-center"
+          key={id}
+        >
+          <Text className="text-white font-semibold">{title}</Text>
+          <Text className="text-neutral-300 text-sm">{personal}</Text>
+        </View>
+      );
+    });
+  };
+
   return (
     <ScrollView
       className="flex-1 bg-neutral-900"
@@ -56,10 +93,8 @@ export default function PersonScreen() {
         <View
           className="flex-row justify-center"
           style={{
-            shadowColor: "gray",
-            shadowRadius: 40,
-            shadowOffset: { width: 0, height: 5 },
-            shadowOpacity: 1,
+            elevation: 18,
+            shadowColor: "#FFF ",
           }}
         >
           <View className="items-center rounded-full overflow-hidden h-72 w-72 border-2 border-neutral-500">
@@ -69,7 +104,6 @@ export default function PersonScreen() {
             />
           </View>
         </View>
-
         <View className="mt-6">
           <Text className="text-3xl text-white font-bold text-center">
             Keanu Reeves
@@ -80,45 +114,29 @@ export default function PersonScreen() {
             Kenya, Nairobi
           </Text>
         </View>
-
         {/*========================== Gender Section and Details===================================== */}
 
         <View className="mx-3 mt-6 p-4 flex-row justify-between items-center bg-neutral-700 rounded-full">
-          <View className="border-r-2 border-r-neutral-400 px-2 items-center">
-            <Text className="text-white font-semibold">Gender</Text>
-            <Text className="text-neutral-300 text-sm">Male</Text>
-          </View>
-
-          <View className="border-r-2 border-r-neutral-400 px-2 items-center">
-            <Text className="text-white font-semibold">Birthday</Text>
-            <Text className="text-neutral-300 text-sm">1964-09-02</Text>
-          </View>
-
-          <View className="border-r-2 border-r-neutral-400 px-2 items-center">
-            <Text className="text-white font-semibold">Known for</Text>
-            <Text className="text-neutral-300 text-sm">Acting</Text>
-          </View>
-
+          {renderPersonalData()}
           <View className=" border-r-neutral-400 px-2 items-center">
             <Text className="text-white font-semibold">Popularity</Text>
             <Text className="text-neutral-300 text-sm">64.23</Text>
           </View>
         </View>
-        {/*===================== Biography========================= */}
-        <View className="my-6 mx-4 space-y-2">
-          <Text className="text-white text-lg">Biography</Text>
-          <Text className="text-neutral-400 tracking-wide">
-            {/* {person?.biography ? person.biography : "N/A"} */}He is the
-            titular protagonist of the American media franchise John Wick. In
-            the franchise's film series, he is introduced as a legendary
-            Belarusian-American ex-hitman who left the criminal underworld after
-            falling in love with and marrying a woman named Helen.
-          </Text>
-        </View>
-
-        {/*=============== Movie List for the Peron============================ */}
-        <MovieList data={personMovies} title={"Movies"} hideSeeAll={true} />
       </View>
+      {/*===================== Biography========================= */}
+      <View className="my-6 mx-4 space-y-2">
+        <Text className="text-white text-lg">Biography</Text>
+        <Text className="text-neutral-400 tracking-wide">
+          {/* {person?.biography ? person.biography : "N/A"} */}He is the
+          titular protagonist of the American media franchise John Wick. In the
+          franchise's film series, he is introduced as a legendary
+          Belarusian-American ex-hitman who left the criminal underworld after
+          falling in love with and marrying a woman named Helen.
+        </Text>
+      </View>
+      {/*=============== Movie List for the Peron============================ */}
+      <MovieList data={personMovies} title={"Movies"} hideSeeAll={true} />
     </ScrollView>
   );
 }
