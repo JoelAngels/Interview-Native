@@ -38,16 +38,17 @@ export default function SearchScreen() {
       </View>
 
       {/* ======================================search results========================================= */}
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: "15px" }}
-        className="space-y-3"
-      >
-        <Text className="text-white font-semibold ml-1">
-          Results ({results.length})
-        </Text>
+      {/* if there are no results, show scrollview otherwise show the view down below */}
+      {results.length > 0 ? (
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingHorizontal: "15px" }}
+          className="space-y-3"
+        >
+          <Text className="text-white font-semibold ml-1">
+            Results ({results.length})
+          </Text>
 
-        <View>
           <View className="flex-row justify-between flex-wrap">
             {results.map((item, index) => (
               <TouchableWithoutFeedback
@@ -69,8 +70,15 @@ export default function SearchScreen() {
               </TouchableWithoutFeedback>
             ))}
           </View>
+        </ScrollView>
+      ) : (
+        <View className="flex-row justify-center">
+          <Image
+            source={require("../assets/images/movieTime.png")}
+            className="h-96 w-96"
+          />
         </View>
-      </ScrollView>
+      )}
     </SafeAreaView>
   );
 }
