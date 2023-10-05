@@ -19,7 +19,7 @@ let movieName = "Ant-Man and the Wasp: Quantumania";
 export default function SearchScreen() {
   const navigation = useNavigation();
 
-  const [results, setResults] = useState([1, 2, 3, 4]);
+  const [results, setResults] = useState([]);
   return (
     <SafeAreaView className=" bg-neutral-800 flex-1 pt-5">
       <View className="mx-4 mb-3 flex-row justify-between items-center border border-neutral-500 rounded-full">
