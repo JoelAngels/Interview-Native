@@ -17,6 +17,7 @@ import Cast from "../components/cast";
 import MovieList from "../components/movieList";
 import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
+import Loading from "../components/loading";
 
 var { width, height } = Dimensions.get("window");
 
@@ -25,6 +26,7 @@ export default function MovieScreen() {
   const [isFavourite, setFavourite] = useState(false);
   const [cast, setCast] = useState([1, 2, 3, 4, 5]);
   const [similarMovies, setSimilarMovies] = useState([1, 2, 3, 4, 5]);
+  const [loading, setLoading] = useState(false);
   let movieName = "Ant-Man and the Wasp: Quantumania";
 
   const genre = [
@@ -76,24 +78,31 @@ export default function MovieScreen() {
           />
         </TouchableOpacity>
       </SafeAreaView>
-      {/* Image details with gradient*/}
-      <View>
-        <Image
-          source={require("../assets/images/moviePoster2.png")}
-          style={{ width, height: height * 0.55 }}
-        />
-        <LinearGradient
-          colors={[
-            "transparent",
-            "rgba(23, 23, 23, 0.8)",
-            "rgba(23, 23, 23, 1)",
-          ]}
-          style={{ width, height: height * 0.4 }}
-          start={{ x: 0.5, y: 0 }}
-          end={{ x: 0.5, y: 1 }}
-          className="absolute bottom-0"
-        />
-      </View>
+
+      {/*============================= Image details with gradient=============================*/}
+
+      {loading ? (
+        <Loading />
+      ) : (
+        <View>
+          <Image
+            source={require("../assets/images/moviePoster2.png")}
+            style={{ width, height: height * 0.55 }}
+          />
+          <LinearGradient
+            colors={[
+              "transparent",
+              "rgba(23, 23, 23, 0.8)",
+              "rgba(23, 23, 23, 1)",
+            ]}
+            style={{ width, height: height * 0.4 }}
+            start={{ x: 0.5, y: 0 }}
+            end={{ x: 0.5, y: 1 }}
+            className="absolute bottom-0"
+          />
+        </View>
+      )}
+
       {/* Movie details */}
       <View style={{ marginTop: -(height * 0.09) }}>
         <Text className="text-white text-center text-3xl font-bold tracking-wider">
