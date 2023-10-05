@@ -26,19 +26,18 @@ export default function MovieScreen() {
   const [cast, setCast] = useState([1, 2, 3, 4, 5]);
   const [similarMovies, setSimilarMovies] = useState([1, 2, 3, 4, 5]);
   let movieName = "Ant-Man and the Wasp: Quantumania";
-  let myId = uuidv4();
 
   const genre = [
     {
-      id: myId,
+      id: uuidv4(),
       title: "Action",
     },
     {
-      id: myId,
+      id: uuidv4(),
       title: "Thriller",
     },
     {
-      id: myId,
+      id: uuidv4(),
       title: "Comedy",
     },
   ];
@@ -111,7 +110,7 @@ export default function MovieScreen() {
           {genre.map((item) => (
             <Text
               className="text-neutral-400 font-semibold text-base text-center"
-              key={item.uuid}
+              key={item.id}
             >
               {item.title}
             </Text>
