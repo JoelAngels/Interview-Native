@@ -88,3 +88,6 @@ export default function SearchScreen() {
 
 // castmagic.io => audio to text,
 //wiseone.io
+//microservises,
+// distributed sustems
+// jumia, testgorialla, glovo, monzo,
