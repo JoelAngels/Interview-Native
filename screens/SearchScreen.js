@@ -85,9 +85,3 @@ export default function SearchScreen() {
     </SafeAreaView>
   );
 }
-
-// castmagic.io => audio to text,
-//wiseone.io
-//microservises,
-// distributed sustems
-// jumia, testgorialla, glovo, monzo,
