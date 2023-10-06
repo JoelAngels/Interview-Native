@@ -9,6 +9,9 @@ import { persistStore } from "redux-persist";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
+if (__DEV__) {
+  import("./ReactotronConfig").then(() => console.log("Reactotron Configured"));
+}
 
 root.render(
   <React.StrictMode>

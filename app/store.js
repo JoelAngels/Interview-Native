@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { movieApi } from "../services/movieApi";
+import Reactotron from "../ReactotronConfig";
 // Or from '@reduxjs/toolkit/query/react'
 // import { setupListeners } from "@reduxjs/toolkit/query";
 
@@ -12,6 +13,8 @@ export const store = configureStore({
   // and other useful features of `rtk-query`.
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(movieApi.middleware),
+  enhancers: [Reactotron.createEnhancer()],
+  devTools: true,
 });
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors
