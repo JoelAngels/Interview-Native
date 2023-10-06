@@ -19,7 +19,7 @@ let movieName = "Ant-Man and the Wasp: Quantumania";
 
 export default function SearchScreen() {
   const navigation = useNavigation();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const [results, setResults] = useState([]);
   return (
@@ -85,3 +85,6 @@ export default function SearchScreen() {
     </SafeAreaView>
   );
 }
+
+// castmagic.io => audio to text,
+//wiseone.io
