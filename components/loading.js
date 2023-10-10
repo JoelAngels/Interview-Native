@@ -1,4 +1,4 @@
-import { View, Text, Dimensions, TextInput } from "react-native";
+import { View, Dimensions, TextInput } from "react-native";
 import React, { useEffect } from "react";
 const { width, height } = Dimensions.get("window");
 
