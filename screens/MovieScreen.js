@@ -22,6 +22,7 @@ import Loading from "../components/loading";
 var { width, height } = Dimensions.get("window");
 
 export default function MovieScreen() {
+  // Making
   const [query, setQuery] = useState("");
   const navigation = useNavigation();
   const [isFavourite, setFavourite] = useState(false);

@@ -87,3 +87,6 @@ export default function Loading() {
     </View>
   );
 }
+
+// mitchelle, shiks, tonia, rose //jacinta shaheedwill  11:30
+// arukah brooks sagana
