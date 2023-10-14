@@ -1,8 +1,4 @@
-import {
-  createApi,
-  fetchBaseQuery,
-  FetchBaseQuery,
-} from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // create the API
 // Define endpoints
@@ -24,3 +20,4 @@ export const movieApi = createApi({
 });
 
 export const { useGetMoviesMutation } = movieApi;
+//https://youtu.be/wOKTQnMZmIc
