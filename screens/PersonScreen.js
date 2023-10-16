@@ -6,11 +6,12 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  FlatList,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { ArrowLeftIcon, ChevronLeftIcon } from "react-native-heroicons/outline";
 import { HeartIcon } from "react-native-heroicons/solid";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles, theme } from "../theme";
 import MovieList from "../components/movieList";
@@ -18,9 +19,28 @@ import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
 import Loading from "../components/loading";
 
+import axios from "axios";
+
 var { width, height } = Dimensions.get("window");
 
 export default function PersonScreen() {
+  // const [users, setUsers] = useState([]);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       "https://api.themoviedb.org/3/search/movie?query=Jack+Reacher&api_key=cabf4c6cc60ca4cbe597f089b4a0a45e"
+  //     )
+  //     .then((response) => setUsers(response.data))
+  //     .catch((err) => console.log(err));
+  // }, []);
+
+  // const renderUserCard = ({ item }) => {
+  //   return (
+  //     <View>
+  //       <Text>{item.release_date}</Text>
+  //     </View>
+  //   );
+  // };
   const navigation = useNavigation(false);
   const [isFavourite, setFavourite] = useState(false);
   const [personMovies, setPersonMovies] = useState([1, 2, 3, 4]);
@@ -60,6 +80,17 @@ export default function PersonScreen() {
   };
 
   return (
+    // <SafeAreaView
+    //   // className="flex-1 bg-neutral-900"
+    //   contentContainerStyle={{ paddingBottom: 20 }}
+    // >
+    //   <FlatList
+    //     data={users}
+    //     keyExtractor={(item) => item.id.toString()}
+    //     renderItem={renderUserCard}
+    //   />
+    //   <Text>Joel Angel Abalula</Text>
+    // </SafeAreaView>
     <ScrollView
       className="flex-1 bg-neutral-900"
       contentContainerStyle={{ paddingBottom: 20 }}
